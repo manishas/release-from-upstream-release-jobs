@@ -1,0 +1,26 @@
+jobs:
+
+# manifest gen for VISUALIZER
+  - name: demo-man
+    type: manifest
+    steps:
+      - IN: demo-img
+      - IN: demo-img-opts
+      - TASK: managed
+
+# TEST deployment for VISUALIZER to Amazon ECS
+  - name: deploy-test-ecs
+    type: deploy
+    steps:
+      - IN: demo-man
+      - IN: env-aws-ecs-cluster
+      - TASK: managed
+
+#Release job
+  - name: version-deployment
+    type: release
+    steps:
+      - IN: demo-release-version
+      - IN: deploy-test-ecs
+      - TASK: managed
+        bump: beta
