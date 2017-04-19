@@ -1,5 +1,10 @@
 jobs:
 
+ - name: release-single-component_runCI
+   type: runCI
+   steps:
+     - OUT: demo-img
+
 # manifest gen for VISUALIZER
   - name: demo-man
     type: manifest
