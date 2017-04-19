@@ -4,9 +4,7 @@ jobs:
     type: runCI
     steps:
       - OUT: demo-img
-    flags:
-      - release-single-component
-
+  
   - name: demo-man
 	type: manifest
 	steps:
