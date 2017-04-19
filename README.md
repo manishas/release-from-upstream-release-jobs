@@ -1,4 +1,4 @@
-# Docker Build, Push, Continuous Integration, Continuous Deployment and Versioning for a Node JS application
+# Docker Build, Push, Continuous Integration (CI), Continuous Deployment (CD) and Versioning for a Node JS application
 
 ![AyeAye](https://github.com/devops-recipes/push-docker-hub/blob/master/public/resources/images/captain.png)
 
@@ -16,7 +16,21 @@ and istanbul. This repo demonstrates a release job that versions the Node JS app
 * Change the DOCKER_REPO and DOCKER_ACC to point to your repo and docker account
 * You should be able to run a manual build or webhook build on commit
 
-## CD Pipelines View
+## Add Continuous Delivery pipelines to deploy to Amazon ECS
+* Fork this repo into your local repo
+* Follow instructions to [connect your Continuous Integration project to your Continuous Delivery pipelines](http://docs.shippable.com/tutorials/pipelines/connectingCiPipelines/).
+* Create an [integration](http://docs.shippable.com/integrations/containerServices/ecs/) for Amazon ECS
+* All pipeline config is in shippable.resources.yml and shippable.jobs.yml. Check these files and update config wherever the comment asks you to replace with your specific values
+* This demo uses a declarative job type called 'deploy' in Shippable to deploy to ECS.
+* This demo uses a declarative job type called 'release' to version the deployment to ECS.
+
+## CD Reports on Shippable
+
+### CD Pipeline View
+
+### CD Deployment Job Console Output
+
+### CD Release Job Console Output
 
 ## CI Reports on Shippable
 
