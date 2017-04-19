@@ -26,14 +26,19 @@ and istanbul. This repo demonstrates a release job that versions the Node JS app
 
 ## CD Reports on Shippable
 
+### Integration View
+![Integration View](https://github.com/devops-recipes/release-single-component/blob/master/public/resources/images/integration-view.png)
+
 ### CD Pipeline View
+![CD Pipeline View](https://github.com/devops-recipes/release-single-component/blob/master/public/resources/images/pipeline-view.png)
 
 ### CD Deployment Job Console Output
+![CD Deployment Job Console Output](https://github.com/devops-recipes/release-single-component/blob/master/public/resources/images/deploy-job-output.png)
 
 ### CD Release Job Console Output
+![CD Release Job Console Output](https://github.com/devops-recipes/release-single-component/blob/master/public/resources/images/release-job-output.png)
 
 ## CI Reports on Shippable
 
-### CI Integration View
-
 ### CI Console Output
+![CI Console Output](https://github.com/devops-recipes/release-single-component/blob/master/public/resources/images/console.jpg)
