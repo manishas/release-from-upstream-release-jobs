@@ -4,24 +4,27 @@ jobs:
    type: runCI
    steps:
      - OUT: demo-img
+    flags:
+      - release-single-component
 
-# manifest gen for VISUALIZER
   - name: demo-man
     type: manifest
     steps:
       - IN: demo-img
       - IN: demo-img-opts
       - TASK: managed
+    flags:
+      - release-single-component
 
-# TEST deployment for VISUALIZER to Amazon ECS
   - name: deploy-test-ecs
     type: deploy
     steps:
       - IN: demo-man
       - IN: env-aws-ecs-cluster
       - TASK: managed
+    flags:
+      - release-single-component
 
-#Release job
   - name: version-deployment
     type: release
     steps:
@@ -29,3 +32,5 @@ jobs:
       - IN: deploy-test-ecs
       - TASK: managed
         bump: beta
+    flags:
+      - release-single-component
