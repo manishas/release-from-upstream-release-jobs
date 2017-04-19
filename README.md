@@ -41,4 +41,4 @@ and istanbul. This repo demonstrates a release job that versions the Node JS app
 ## CI Reports on Shippable
 
 ### CI Console Output
-![CI Console Output](https://github.com/devops-recipes/release-single-component/blob/master/public/resources/images/console.jpg)
+![CI Console Output](https://github.com/devops-recipes/release-single-component/blob/master/public/resources/images/ci-console-view.png)
