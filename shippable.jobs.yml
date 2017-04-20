@@ -25,20 +25,21 @@ jobs:
     flags:
       - release-multiple-component
 
-  - name: version-multiple-components
+  - name: multiple-components-release
     type: release
     steps:
       - IN: java-img-manifest
       - IN: node-img-manifest
+      - IN: version-multiple-components
       - TASK: managed
         bump: beta
     flags:
       - release-multiple-component
 
-  - name: release-multiple-deploy--ecs
+  - name: multiple-components-deploy-ecs
     type: deploy
     steps:
-      - IN: version-multiple-components
+      - IN: multiple-components-release
       - IN: release-multiple-ecs-cluster
       - TASK: managed
     flags:

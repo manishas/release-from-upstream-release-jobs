@@ -30,14 +30,7 @@ resources:
     flags:
       - release-multiple-component
 
-  - name: version-node-ecr-img
-    type: version
-    seed:
-      versionName: "1.0.0"
-    flags:
-      - release-multiple-component
-
-  - name: version-java-ecr-img
+  - name: version-multiple-components
     type: version
     seed:
       versionName: "1.0.0"
