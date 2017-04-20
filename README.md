@@ -13,7 +13,7 @@ It demonstrates how release jobs can be chained, with an upstream release job se
 ## Add Continuous Delivery pipelines to deploy to Amazon ECS
 * Fork this repo into your local repo
 * Follow instructions to [connect your Continuous Integration project to your Continuous Delivery pipelines](http://docs.shippable.com/tutorials/pipelines/connectingCiPipelines/).
-* Create an [integration](http://docs.shippable.com/integrations/containerServices/ecs/) for Amazon ECS, Amazon ECR and Docker hub.
+* Create an [integration](http://docs.shippable.com/integrations/containerServices/ecs/) for Amazon ECS, Amazon ECS, Amazon ECR and Docker hub.
 * All pipeline config is in shippable.resources.yml and shippable.jobs.yml. Check these files and update config wherever the comment asks you to replace with your specific values
 * This demo uses a declarative job type called 'deploy' in Shippable to deploy to ECS.
 * This demo uses a declarative job type called 'release' to version the deployment to ECS.
@@ -21,13 +21,13 @@ It demonstrates how release jobs can be chained, with an upstream release job se
 ## CD Reports on Shippable
 
 ### Integration View
-![Integration View])()
+![Integration View](https://github.com/devops-recipes/release-single-component/blob/master/public/resources/images/integration-view.png)
 
 ### CD Pipeline View
-![CD Pipeline View]()
+![CD Pipeline View](https://github.com/devops-recipes/release-from-upstream-release-jobs/blob/master/public/resources/images/pipeline-view.png)
 
 ### CD Release Job Console Output
-![CD Release Job Console Output]()
+![CD Release Job Console Output](https://github.com/devops-recipes/release-from-upstream-release-jobs/blob/master/public/resources/images/release-job-view.png)
 
 ### CD Deployment Job Console Output
-![CD Deployment Job Console Output]()
+![CD Deployment Job Console Output](https://github.com/devops-recipes/release-from-upstream-release-jobs/blob/master/public/resources/images/deploy-job-view.png)

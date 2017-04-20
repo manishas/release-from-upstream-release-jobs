@@ -1,20 +1,6 @@
 jobs:
 
-  - name: release-single-component_runCI
-    type: runCI
-    steps:
-      - OUT: node-img
-    flags:
-      - release-from-upstream-release-jobs
-
-  - name: ci-java-ecr_runCI
-    type: runCI
-    steps:
-      - OUT: java-img
-    flags:
-      - release-from-upstream-release-jobs
-
-  - name: node-img-manifest
+  - name: release-from-upstream-release-node-img-manifest-job
     type: manifest
     steps:
       - IN: node-img
@@ -23,7 +9,7 @@ jobs:
     flags:
       - release-from-upstream-release-jobs
 
-  - name: java-img-manifest
+  - name: release-from-upstream-release-java-img-manifest-job
     type: manifest
     steps:
       - IN: java-img
@@ -32,7 +18,7 @@ jobs:
     flags:
       - release-from-upstream-release-jobs
 
-  - name: upstream-release-job
+  - name: release-from-upstream-release-upstream-release-job
     type: release
     steps:
       - IN: java-img-manifest
@@ -43,7 +29,7 @@ jobs:
     flags:
       - release-from-upstream-release-jobs
 
-  - name: release-from-upstream-release-deploy-ecs
+  - name: release-from-upstream-release-deploy-ecs-job
     type: deploy
     steps:
       - IN: upstream-release-job
@@ -52,7 +38,7 @@ jobs:
     flags:
       - release-from-upstream-release-jobs
 
-  - name: downstream-release-job
+  - name: release-from-upstream-release-downstream-release-job
     type: release
     steps:
       - IN: release-from-upstream-release-deploy-ecs
