@@ -21,7 +21,7 @@ It demonstrates how release jobs can be chained, with an upstream release job se
 ## CD Reports on Shippable
 
 ### Integration View
-![Integration View](https://github.com/devops-recipes/release-single-component/blob/master/public/resources/images/integration-view.png)
+![Integration View](https://github.com/devops-recipes/release-mutiple-component/blob/master/public/resources/images/integration-view.png)
 
 ### CD Pipeline View
 ![CD Pipeline View](https://github.com/devops-recipes/release-from-upstream-release-jobs/blob/master/public/resources/images/pipeline-view.png)
