@@ -1,5 +1,28 @@
 resources:
-  - name: ecr-img
+
+  - name: node-img
+    type: image
+    integration: dr-dockerhub
+    pointer:
+      sourceName: "devopsrecipes/release-push-docker-hub"
+      isPull: false
+    seed:
+      versionName: master.2
+    flags:
+      - release-from-upstream-release-jobs
+
+  - name: node-img-opts
+    type: dockerOptions
+    version:
+      memory: 128
+      cpuShares: 256
+      portMappings:
+        - 8180:8180
+      publishAllPorts : true
+    flags:
+      - release-from-upstream-release-jobs
+
+  - name: java-img
     type: image
     integration: dr-ecr
     pointer:
@@ -8,31 +31,31 @@ resources:
     seed:
       versionName: master.12
     flags:
-      - release-multiple-component
+      - release-from-upstream-release-jobs
 
-  - name: ecr-img-opts
+  - name: java-img-opts
     type: dockerOptions
     version:
       memory: 128
       cpuShares: 256
       portMappings:
-        - 8080:8080
+        - 8280:8280
       publishAllPorts : true
     flags:
-      - release-multiple-component
+      - release-from-upstream-release-jobs
 
-  - name: release-multiple-ecs-cluster
+  - name: release-from-upstream-release-ecs-cluster
     type: cluster
     integration: dr-aws
     pointer:
-      sourceName : "release-multiple-component-cs"
+      sourceName : "release-from-upstream-release-jobs-cs"
       region: "us-west-2"
     flags:
-      - release-multiple-component
+      - release-from-upstream-release-jobs
 
-  - name: release-version
+  - name: upstream-release-version
     type: version
     seed:
       versionName: "1.0.0"
     flags:
-      - release-multiple-component
+      - release-from-upstream-release-jobs

@@ -1,46 +1,63 @@
 jobs:
 
+  - name: release-single-component_runCI
+    type: runCI
+    steps:
+      - OUT: node-img
+    flags:
+      - release-from-upstream-release-jobs
+
   - name: ci-java-ecr_runCI
     type: runCI
     steps:
-      - OUT: ecr-img
+      - OUT: java-img
     flags:
-      - release-multiple-component
+      - release-from-upstream-release-jobs
 
   - name: node-img-manifest
     type: manifest
     steps:
-      - IN: demo-img
-      - IN: demo-img-opts
+      - IN: node-img
+      - IN: node-img-opts
       - TASK: managed
     flags:
-      - release-multiple-component
+      - release-from-upstream-release-jobs
 
   - name: java-img-manifest
     type: manifest
     steps:
-      - IN: ecr-img
-      - IN: ecr-img-opts
+      - IN: java-img
+      - IN: java-img-opts
       - TASK: managed
     flags:
-      - release-multiple-component
+      - release-from-upstream-release-jobs
 
-  - name: multiple-components-release
+  - name: upstream-release-job
     type: release
     steps:
       - IN: java-img-manifest
       - IN: node-img-manifest
-      - IN: release-version
+      - IN: upstream-release-version
       - TASK: managed
         bump: beta
     flags:
-      - release-multiple-component
+      - release-from-upstream-release-jobs
 
-  - name: multiple-components-deploy-ecs
+  - name: release-from-upstream-release-deploy-ecs
     type: deploy
     steps:
-      - IN: multiple-components-release
-      - IN: release-multiple-ecs-cluster
+      - IN: upstream-release-job
+      - IN: release-from-upstream-release-ecs-cluster
       - TASK: managed
     flags:
-      - release-multiple-component
+      - release-from-upstream-release-jobs
+
+  - name: downstream-release-job
+    type: release
+    steps:
+      - IN: release-from-upstream-release-deploy-ecs
+      - TASK: managed
+        bump: rc
+    flags:
+      - release-from-upstream-release-jobs
+
