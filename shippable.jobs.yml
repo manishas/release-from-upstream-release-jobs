@@ -1,12 +1,5 @@
 jobs:
 
-  - name: release-single-component_runCI
-    type: runCI
-    steps:
-      - OUT: demo-img
-    flags:
-      - release-multiple-component
-
   - name: ci-java-ecr_runCI
     type: runCI
     steps:
