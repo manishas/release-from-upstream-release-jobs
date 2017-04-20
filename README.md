@@ -23,10 +23,10 @@ docker images built by -
 ![Integration View](https://github.com/devops-recipes/release-single-component/blob/master/public/resources/images/integration-view.png)
 
 ### CD Pipeline View
-![CD Pipeline View](https://github.com/devops-recipes/release-single-component/blob/master/public/resources/images/pipeline-view.png)
+![CD Pipeline View](https://github.com/devops-recipes/release-multiple-component/blob/master/public/resources/images/pipeline-view.png)
 
 ### CD Release Job Console Output
-![CD Release Job Console Output](https://github.com/devops-recipes/release-single-component/blob/master/public/resources/images/release-job-output.png)
+![CD Release Job Console Output](https://github.com/devops-recipes/release-multiple-component/blob/master/public/resources/images/release-job-view.png)
 
 ### CD Deployment Job Console Output
-![CD Deployment Job Console Output](https://github.com/devops-recipes/release-single-component/blob/master/public/resources/images/deploy-job-output.png)
+![CD Deployment Job Console Output](https://github.com/devops-recipes/release-multiple-component/blob/master/public/resources/images/deploy-job-view.png)
