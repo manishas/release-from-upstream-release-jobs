@@ -16,7 +16,7 @@ resources:
       memory: 128
       cpuShares: 256
       portMappings:
-        - 80:80
+        - 8080:8080
       publishAllPorts : true
     flags:
       - release-multiple-component
