@@ -30,7 +30,7 @@ jobs:
     steps:
       - IN: java-img-manifest
       - IN: node-img-manifest
-      - IN: version-multiple-components
+      - IN: release-version
       - TASK: managed
         bump: beta
     flags:

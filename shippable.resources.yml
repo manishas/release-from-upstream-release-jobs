@@ -30,7 +30,7 @@ resources:
     flags:
       - release-multiple-component
 
-  - name: version-multiple-components
+  - name: release-version
     type: version
     seed:
       versionName: "1.0.0"
