@@ -48,7 +48,7 @@ resources:
     type: cluster
     integration: dr-aws
     pointer:
-      sourceName : "release-from-upstream-release-jobs-cs"
+      sourceName : "release-multiple-component-cs"
       region: "us-west-2"
     flags:
       - release-from-upstream-release-jobs
