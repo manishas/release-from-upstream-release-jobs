@@ -8,7 +8,18 @@ resources:
     seed:
       versionName: master.2
     flags:
-      - release-single-component
+      - release-multiple-component
+
+  - name: ecr-img
+    type: image
+    integration: dr-ecr
+    pointer:
+      sourceName: "679404489841.dkr.ecr.us-west-2.amazonaws.com/devopsrecipes-java-ecr"
+      isPull: false
+    seed:
+      versionName: master.12
+    flags:
+      - release-multiple-component
 
   - name: demo-img-opts
     type: dockerOptions
@@ -19,7 +30,7 @@ resources:
         - 80:80
       publishAllPorts : true
     flags:
-      - release-single-component
+      - release-multiple-component
 
   - name: env-aws-ecs-cluster
     type: cluster
@@ -28,11 +39,11 @@ resources:
       sourceName : "release-push-docker-hub-ecs"
       region: "us-west-2"
     flags:
-      - release-single-component
+      - release-multiple-component
 
   - name: demo-release-version
     type: version
     seed:
       versionName: "1.0.0"
     flags:
-      - release-single-component
+      - release-multiple-component

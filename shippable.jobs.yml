@@ -4,6 +4,15 @@ jobs:
     type: runCI
     steps:
       - OUT: demo-img
+    flags:
+      - release-multiple-component
+
+  - name: ci-java-ecr_runCI
+    type: runCI
+    steps:
+      - OUT: ecr-img
+    flags:
+      - release-multiple-component
 
   - name: demo-man
     type: manifest
@@ -12,7 +21,7 @@ jobs:
       - IN: demo-img-opts
       - TASK: managed
     flags:
-      - release-single-component
+      - release-multiple-component
 
   - name: deploy-test-ecs
     type: deploy
@@ -21,7 +30,7 @@ jobs:
       - IN: env-aws-ecs-cluster
       - TASK: managed
     flags:
-      - release-single-component
+      - release-multiple-component
 
   - name: version-deployment
     type: release
@@ -31,4 +40,4 @@ jobs:
       - TASK: managed
         bump: beta
     flags:
-      - release-single-component
+      - release-multiple-component
