@@ -21,8 +21,8 @@ jobs:
   - name: release-from-upstream-release-upstream-release-job
     type: release
     steps:
-      - IN: java-img-manifest
-      - IN: node-img-manifest
+      - IN: release-from-upstream-release-node-img-manifest-job
+      - IN: release-from-upstream-release-java-img-manifest-job
       - IN: upstream-release-version
       - TASK: managed
         bump: beta
@@ -32,7 +32,7 @@ jobs:
   - name: release-from-upstream-release-deploy-ecs-job
     type: deploy
     steps:
-      - IN: upstream-release-job
+      - IN: release-from-upstream-release-upstream-release-job
       - IN: release-from-upstream-release-ecs-cluster
       - TASK: managed
     flags:
@@ -41,7 +41,7 @@ jobs:
   - name: release-from-upstream-release-downstream-release-job
     type: release
     steps:
-      - IN: release-from-upstream-release-deploy-ecs
+      - IN: release-from-upstream-release-deploy-ecs-job
       - TASK: managed
         bump: rc
     flags:
