@@ -1,15 +1,4 @@
 resources:
-  - name: demo-img
-    type: image
-    integration: dr-dockerhub
-    pointer:
-      sourceName: "devopsrecipes/release-push-docker-hub"
-      isPull: false
-    seed:
-      versionName: master.2
-    flags:
-      - release-multiple-component
-
   - name: ecr-img
     type: image
     integration: dr-ecr
@@ -21,7 +10,7 @@ resources:
     flags:
       - release-multiple-component
 
-  - name: demo-img-opts
+  - name: ecr-img-opts
     type: dockerOptions
     version:
       memory: 128
@@ -32,16 +21,23 @@ resources:
     flags:
       - release-multiple-component
 
-  - name: env-aws-ecs-cluster
+  - name: release-multiple-ecs-cluster
     type: cluster
     integration: dr-aws
     pointer:
-      sourceName : "release-push-docker-hub-ecs"
+      sourceName : "release-multiple-component-cs"
       region: "us-west-2"
     flags:
       - release-multiple-component
 
-  - name: demo-release-version
+  - name: version-node-ecr-img
+    type: version
+    seed:
+      versionName: "1.0.0"
+    flags:
+      - release-multiple-component
+
+  - name: version-java-ecr-img
     type: version
     seed:
       versionName: "1.0.0"

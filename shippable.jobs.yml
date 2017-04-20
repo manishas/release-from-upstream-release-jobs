@@ -14,7 +14,7 @@ jobs:
     flags:
       - release-multiple-component
 
-  - name: demo-man
+  - name: node-img-manifest
     type: manifest
     steps:
       - IN: demo-img
@@ -23,21 +23,30 @@ jobs:
     flags:
       - release-multiple-component
 
-  - name: deploy-test-ecs
-    type: deploy
+  - name: java-img-manifest
+    type: manifest
     steps:
-      - IN: demo-man
-      - IN: env-aws-ecs-cluster
+      - IN: ecr-img
+      - IN: ecr-img-opts
       - TASK: managed
     flags:
       - release-multiple-component
 
-  - name: version-deployment
+  - name: version-multiple-components
     type: release
     steps:
-      - IN: demo-release-version
-      - IN: deploy-test-ecs
+      - IN: java-img-manifest
+      - IN: node-img-manifest
       - TASK: managed
         bump: beta
+    flags:
+      - release-multiple-component
+
+  - name: release-multiple-deploy--ecs
+    type: deploy
+    steps:
+      - IN: version-multiple-components
+      - IN: release-multiple-ecs-cluster
+      - TASK: managed
     flags:
       - release-multiple-component
