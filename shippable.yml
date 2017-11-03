@@ -5,7 +5,6 @@ resources:
     integration: dr-dockerhub
     pointer:
       sourceName: "devopsrecipes/release-push-docker-hub"
-      isPull: false
     seed:
       versionName: master.2
     flags:
@@ -27,7 +26,6 @@ resources:
     integration: dr-ecr
     pointer:
       sourceName: "679404489841.dkr.ecr.us-west-2.amazonaws.com/devopsrecipes-java-ecr"
-      isPull: false
     seed:
       versionName: master.12
     flags:
@@ -57,5 +55,49 @@ resources:
     type: version
     seed:
       versionName: "1.0.0"
+    flags:
+      - release-from-upstream-release-jobs
+
+jobs:
+
+  - name: release-from-upstream-release-node-img-manifest-job
+    type: manifest
+    steps:
+      - IN: node-img
+      - IN: node-img-opts
+    flags:
+      - release-from-upstream-release-jobs
+
+  - name: release-from-upstream-release-java-img-manifest-job
+    type: manifest
+    steps:
+      - IN: java-img
+      - IN: java-img-opts
+    flags:
+      - release-from-upstream-release-jobs
+
+  - name: release-from-upstream-release-upstream-release-job
+    type: release
+    bump: beta
+    steps:
+      - IN: release-from-upstream-release-node-img-manifest-job
+      - IN: release-from-upstream-release-java-img-manifest-job
+      - IN: upstream-release-version
+    flags:
+      - release-from-upstream-release-jobs
+
+  - name: release-from-upstream-release-deploy-ecs-job
+    type: deploy
+    steps:
+      - IN: release-from-upstream-release-upstream-release-job
+      - IN: release-from-upstream-release-ecs-cluster
+    flags:
+      - release-from-upstream-release-jobs
+
+  - name: release-from-upstream-release-downstream-release-job
+    type: release
+    bump: rc
+    steps:
+      - IN: release-from-upstream-release-deploy-ecs-job
     flags:
       - release-from-upstream-release-jobs
