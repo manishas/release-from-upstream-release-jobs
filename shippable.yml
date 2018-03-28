@@ -23,7 +23,7 @@ resources:
 
   - name: java-img
     type: image
-    integration: dr-ecr
+    integration: drship_aws
     pointer:
       sourceName: "679404489841.dkr.ecr.us-west-2.amazonaws.com/devopsrecipes-java-ecr"
     seed:
@@ -44,7 +44,7 @@ resources:
 
   - name: release-from-upstream-release-ecs-cluster
     type: cluster
-    integration: dr-aws
+    integration: drship_aws
     pointer:
       sourceName : "release-multiple-component-cs"
       region: "us-west-2"
